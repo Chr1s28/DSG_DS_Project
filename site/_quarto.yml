@@ -1,6 +1,8 @@
 project:
   type: website
 
+lang: de
+
 website:
   title: "DSG Projekt T5"
   navbar:
@@ -26,6 +28,3 @@ format:
     include-after-body: plotly-dark-mode.html
     toc: true
     toc-depth: 3
-
-
-
