@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "DSG Projekt T5"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: 1_projektcharta.ipynb
+        text: Projektcharta
+      - href: 2_datenbericht.ipynb
+        text: Datenbericht
+      - href: 3_modellierungsbericht.ipynb
+        text: Modellierungsbericht
+      - href: 4_evaluationsbericht.ipynb
+        text: Evaluationsbericht
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    page-layout: full
+    css: styles.css
+    include-after-body: plotly-dark-mode.html
+    toc: true
+    toc-depth: 3
+
+
+

@@ -1,0 +1,6 @@
+/.quarto/
+**/*.quarto_ipynb
+
+# temp
+/_site/
+/_extensions/
