@@ -1,0 +1,36 @@
+<script>
+// Function to update all Plotly charts based on the theme
+function updatePlotlyTheme(isDark) {
+    const charts = document.querySelectorAll('.js-plotly-plot');
+    
+    charts.forEach(chart => {
+        const update = {
+            'paper_bgcolor': isDark ? '#222' : '#fff',
+            'plot_bgcolor': isDark ? '#222' : '#fff',
+            'font.color': isDark ? '#ddd' : '#333',
+            'xaxis.gridcolor': isDark ? '#444' : '#eee',
+            'yaxis.gridcolor': isDark ? '#444' : '#eee'
+        };
+        
+        // Use Plotly's internal API to update the layout
+        Plotly.relayout(chart, update);
+    });
+}
+
+const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+        if (mutation.attributeName === "class") {
+            const isDark = document.body.classList.contains('quarto-dark');
+            updatePlotlyTheme(isDark);
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    observer.observe(document.body, { attributes: true });
+    
+    if (document.body.classList.contains('quarto-dark')) {
+        updatePlotlyTheme(true);
+    }
+});
+</script>
