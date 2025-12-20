@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>site – DSG Projekt T5</title>
+<title>Song Popularity Predictor – DSG Projekt T5</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -288,21 +288,31 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Auf dieser Seite</h2>
+   
+  <ul>
+  <li><a href="#einführung" id="toc-einführung" class="nav-link active" data-scroll-target="#einführung">Einführung</a>
+  <ul class="collapse">
+  <li><a href="#projektüberblick" id="toc-projektüberblick" class="nav-link" data-scroll-target="#projektüberblick">Projektüberblick</a></li>
+  <li><a href="#ki-deklaraion" id="toc-ki-deklaraion" class="nav-link" data-scroll-target="#ki-deklaraion">KI-Deklaraion</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">site</h1>
+<h1 class="title">Song Popularity Predictor</h1>
 </div>
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
   
@@ -314,16 +324,37 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>TODO:</p>
+<section id="einführung" class="level1">
+<h1>Einführung</h1>
+<p>Dieses Projekt wurde im Rahmen vom <code>DS.DSG</code> Modul durchgeführt und hat zum Ziel, die Popularität von Songs mithilfe datengetriebener Methoden nachvollziehbar vorherzusagen. Dazu werden verschiedene Informationsquellen kombiniert - Metadaten, audio-basierte Features und textuelle Repräsentationen (z.B. Lyrics-Embeddings).</p>
+<p>Die Arbeit legt Wert auf Transparenz, Reproduzierbarkeit und nachvollziehbare Evaluationsmetriken, sodass Modellentscheidungen und Ergebnisse geprüft werden können.</p>
+<section id="projektüberblick" class="level2">
+<h2 class="anchored" data-anchor-id="projektüberblick">Projektüberblick</h2>
 <ul>
-<li>AI Deklaration</li>
-<li>Github</li>
-<li>Check duplicate rows with name + artist</li>
-<li>Add references</li>
-<li>Mention popularity changing over time</li>
+<li><strong>Daten:</strong> Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen</li>
+<li><strong>Ziel:</strong> Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen</li>
+<li><strong>Struktur:</strong> Die Hauptinhalte liegen als Quarto-Site im Ordner <code>site/</code> und sind in mehrere Jupyter-Notebooks gegliedert:
+<ul>
+<li><em>Projektcharta</em> - Projektziele und Vorgehen</li>
+<li><em>Datenbericht</em> - Datenexploration und Aufbereitung</li>
+<li><em>Modellierungsbericht</em> - Modellaufbau und Training</li>
+<li><em>Evaluationsbericht</em> - Evaluation und Ergebnisse</li>
+</ul></li>
 </ul>
+</section>
+<section id="ki-deklaraion" class="level2">
+<h2 class="anchored" data-anchor-id="ki-deklaraion">KI-Deklaraion</h2>
+<p>ChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:</p>
+<ul>
+<li>Sprachliche Überarbeitung der Dokumentation</li>
+<li>Debugging / Troubleshooting</li>
+</ul>
+<p>Die fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.</p>
+<p>Sämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script>

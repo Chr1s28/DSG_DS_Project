@@ -142,9 +142,23 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "site",
+    "title": "Song Popularity Predictor",
     "section": "",
-    "text": "TODO:\n\nAI Deklaration\nGithub\nCheck duplicate rows with name + artist\nAdd references\nMention popularity changing over time"
+    "text": "Dieses Projekt wurde im Rahmen vom DS.DSG Modul durchgeführt und hat zum Ziel, die Popularität von Songs mithilfe datengetriebener Methoden nachvollziehbar vorherzusagen. Dazu werden verschiedene Informationsquellen kombiniert - Metadaten, audio-basierte Features und textuelle Repräsentationen (z.B. Lyrics-Embeddings).\nDie Arbeit legt Wert auf Transparenz, Reproduzierbarkeit und nachvollziehbare Evaluationsmetriken, sodass Modellentscheidungen und Ergebnisse geprüft werden können.\n\n\n\nDaten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse\n\n\n\n\n\nChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
+  },
+  {
+    "objectID": "index.html#projektüberblick",
+    "href": "index.html#projektüberblick",
+    "title": "Song Popularity Predictor",
+    "section": "",
+    "text": "Daten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse"
+  },
+  {
+    "objectID": "index.html#ki-deklaraion",
+    "href": "index.html#ki-deklaraion",
+    "title": "Song Popularity Predictor",
+    "section": "",
+    "text": "ChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
   },
   {
     "objectID": "1_projektcharta.html",
