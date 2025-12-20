@@ -1,12 +1,6 @@
 ---
-title: "site"
+title: "Song Popularity Predictor"
 format: html
 ---
 
-TODO:
-
-- AI Deklaration
-- Github
-- Check duplicate rows with name + artist
-- Add references
-- Mention popularity changing over time
+{{< include ../README.md >}}
