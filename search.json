@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "site",
-    "section": "",
-    "text": "TODO:\n\nAI Deklaration\nGithub\nCheck duplicate rows with name + artist\nAdd references\nMention popularity changing over time"
-  },
-  {
     "objectID": "3_modellierungsbericht.html",
     "href": "3_modellierungsbericht.html",
     "title": "Modellierungsbericht",
@@ -89,6 +82,13 @@
     "title": "Modellierungsbericht",
     "section": "Nächste Schritte",
     "text": "Nächste Schritte\nUm die Vorhersagekraft signifikant zu steigern, müssten externe Datenquellen integriert werden: * Künstler-Metriken: Historische Popularität, Follower-Zahlen oder Social-Media-Engagement. * Kontext-Daten: Informationen über Playlist-Inklusionen oder Radio-Airplay. * Deep Audio: Analyse von Roh-Audiodateien (Spektrogramme) mittels CNNs statt nur aggregierter Features.\n\n\nCode\nimport pandas as pd\nimport plotly.graph_objects as go\nfrom plotly.subplots import make_subplots\n\n\nmodels = [\"Linear Regression\", \"Random Forest\", \"XGBoost (Audio only)\", \"XGBoost (+ Lyrics)\"]\nr2_scores = [0.054, 0.173, 0.174, 0.226]\nrmse_scores = [12.92, 12.08, 12.07, 11.69]\n\n\nfig = make_subplots(specs=[[{\"secondary_y\": True}]])\n\nfig.add_trace(\n    go.Bar(\n        x=models,\n        y=r2_scores,\n        name=\"R^2 Score (höher ist besser)\",\n        marker_color=\"#1f77b4\",\n        text=r2_scores,\n        textposition=\"auto\",\n        texttemplate=\"%{text:.3f}\"\n    ),\n    secondary_y=False,\n)\n\n\nfig.add_trace(\n    go.Scatter(\n        x=models,\n        y=rmse_scores,\n        name=\"RMSE (tiefer ist besser)\",\n        marker_color=\"#d62728\",\n        mode=\"lines+markers+text\",\n        text=rmse_scores,\n        textposition=\"top center\",\n        texttemplate=\"%{text:.2f}\"\n    ),\n    secondary_y=True,\n)\n\n\nfig.update_layout(\n    title=\"Modellvergleich: R^2 vs. RMSE\",\n    legend={\"orientation\": \"h\", \"yanchor\": \"bottom\", \"y\": 1.02, \"xanchor\": \"right\", \"x\": 1},\n    height=500\n)\n\nfig.update_yaxes(title_text=\"R^2 Score\", secondary_y=False, range=[0, 0.25])\nfig.update_yaxes(title_text=\"RMSE\", secondary_y=True, range=[10, 14])\n\nfig.show()\n\n\nUnable to display output for mime type(s): application/vnd.plotly.v1+json"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "site",
+    "section": "",
+    "text": "TODO:\n\nAI Deklaration\nGithub\nCheck duplicate rows with name + artist\nAdd references\nMention popularity changing over time"
   },
   {
     "objectID": "1_projektcharta.html",

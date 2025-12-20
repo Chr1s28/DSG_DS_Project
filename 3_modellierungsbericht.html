@@ -78,9 +78,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-24772959a0e306aba8d7698078628ce7.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="site_libs/bootstrap/bootstrap-ffa9a6279353761231ec249df0a7fdd3.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-960d9d362f81d399278ec3e29b622b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e7f4145358ce1d0cd37d8d374dbb44f9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-960d9d362f81d399278ec3e29b622b37.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -3557,75 +3557,40 @@ XGBoost R^2: 0.2256</code></pre>
 
 </main> <!-- /main -->
 <script>
-
 // Function to update all Plotly charts based on the theme
-
 function updatePlotlyTheme(isDark) {
-
     const charts = document.querySelectorAll('.js-plotly-plot');
-
     
-
     charts.forEach(chart => {
-
         const update = {
-
             'paper_bgcolor': isDark ? '#222' : '#fff',
-
             'plot_bgcolor': isDark ? '#222' : '#fff',
-
             'font.color': isDark ? '#ddd' : '#333',
-
             'xaxis.gridcolor': isDark ? '#444' : '#eee',
-
             'yaxis.gridcolor': isDark ? '#444' : '#eee'
-
         };
-
         
-
         // Use Plotly's internal API to update the layout
-
         Plotly.relayout(chart, update);
-
     });
-
 }
 
-
-
 const observer = new MutationObserver(function(mutations) {
-
     mutations.forEach(function(mutation) {
-
         if (mutation.attributeName === "class") {
-
             const isDark = document.body.classList.contains('quarto-dark');
-
             updatePlotlyTheme(isDark);
-
         }
-
     });
-
 });
-
-
 
 document.addEventListener("DOMContentLoaded", function() {
-
     observer.observe(document.body, { attributes: true });
-
     
-
     if (document.body.classList.contains('quarto-dark')) {
-
         updatePlotlyTheme(true);
-
     }
-
 });
-
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -3713,7 +3678,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Chr1s28\.github\.io\/DSG_DS_Project\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
