@@ -74,6 +74,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -289,11 +318,30 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Auf dieser Seite</h2>
+   
+  <ul>
+  <li><a href="#beurteilung-der-zielerreichung" id="toc-beurteilung-der-zielerreichung" class="nav-link active" data-scroll-target="#beurteilung-der-zielerreichung">Beurteilung der Zielerreichung</a>
+  <ul class="collapse">
+  <li><a href="#data-mining--modellierungs-ziele" id="toc-data-mining--modellierungs-ziele" class="nav-link" data-scroll-target="#data-mining--modellierungs-ziele">Data Mining- / Modellierungs-Ziele</a></li>
+  <li><a href="#projektziele" id="toc-projektziele" class="nav-link" data-scroll-target="#projektziele">Projektziele</a></li>
+  </ul></li>
+  <li><a href="#empfehlungen-nächste-schritte" id="toc-empfehlungen-nächste-schritte" class="nav-link" data-scroll-target="#empfehlungen-nächste-schritte">Empfehlungen Nächste Schritte</a>
+  <ul class="collapse">
+  <li><a href="#erweiterung-des-domänenwissens" id="toc-erweiterung-des-domänenwissens" class="nav-link" data-scroll-target="#erweiterung-des-domänenwissens">Erweiterung des Domänenwissens</a></li>
+  <li><a href="#adaption-der-projektziele" id="toc-adaption-der-projektziele" class="nav-link" data-scroll-target="#adaption-der-projektziele">Adaption der Projektziele</a></li>
+  <li><a href="#datenerweiterung" id="toc-datenerweiterung" class="nav-link" data-scroll-target="#datenerweiterung">Datenerweiterung</a></li>
+  <li><a href="#rechtliche-und-ethische-aspekte" id="toc-rechtliche-und-ethische-aspekte" class="nav-link" data-scroll-target="#rechtliche-und-ethische-aspekte">Rechtliche und ethische Aspekte</a></li>
+  <li><a href="#bereitstellung" id="toc-bereitstellung" class="nav-link" data-scroll-target="#bereitstellung">Bereitstellung</a></li>
+  </ul></li>
+  <li><a href="#checkpoint-entscheidung" id="toc-checkpoint-entscheidung" class="nav-link" data-scroll-target="#checkpoint-entscheidung">Checkpoint-Entscheidung</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -303,7 +351,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     <div>
     <div class="quarto-title-meta-heading">Autor:in</div>
@@ -327,8 +375,81 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="beurteilung-der-zielerreichung" class="level1">
+<h1>Beurteilung der Zielerreichung</h1>
+<section id="data-mining--modellierungs-ziele" class="level2">
+<h2 class="anchored" data-anchor-id="data-mining--modellierungs-ziele">Data Mining- / Modellierungs-Ziele</h2>
+<p>Die in der Projektcharta definierten quantitativen Erfolgsmetriken wurden mit dem finalen Modell (XGBoost mit Songtext-Embeddings) gemischt erreicht.</p>
+<ul>
+<li><strong>Metrik <span class="math inline">\(R^2\)</span> (Erklärungsgehalt):</strong>
+<ul>
+<li>Zielwert: ≥ 0.4</li>
+<li>Erreicht: 0.242<br>
+</li>
+<li>Beurteilung: Ziel verfehlt. Das Modell kann rund 24% der Varianz in der Popularität erklären. Dies ist eine deutliche Steigerung gegenüber der Baseline (5.4%), bleibt jedoch unter dem angestrebten Zielwert von 40%. Dies deutet darauf hin, dass ein erheblicher Teil der Popularität nicht durch intrinsische Song-Eigenschaften (Audio &amp; Text) erklärt werden kann.</li>
+</ul></li>
+<li><strong>Metrik RMSE (Prognosegenauigkeit):</strong>
+<ul>
+<li>Zielwert: ≤ 15 (Projektziel) bzw. ≤ 10 (Data Mining Ziel)</li>
+<li>Erreicht: 11.69</li>
+<li>Beurteilung: Teilweise erreicht. Das übergeordnete Projektziel einer durchschnittlichen Abweichung von maximal 15 Punkten auf der Popularitätsskala wurde erfolgreich unterboten. Das ambitioniertere technische Ziel von ≤ 10 wurde jedoch knapp verfehlt.</li>
+</ul></li>
+</ul>
+</section>
+<section id="projektziele" class="level2">
+<h2 class="anchored" data-anchor-id="projektziele">Projektziele</h2>
+<p>Das primäre Projektziel war es, dem Talent Manager und den Künstlern nützliche Prognosen zu liefern, um das Erfolgspotenzial von Songs einzuschätzen.</p>
+<p><strong>Erfüllung der Anforderungen:</strong> Das entwickelte Modell liefert mit einem RMSE von 11.69 eine solide Indikation für die zu erwartende Popularität. Es eignet sich gut, um “tote” Tracks (ohne Erfolgsaussichten) frühzeitig zu identifizieren und vom manuellen Review-Prozess auszuschliessen.</p>
+<p><strong>Identifizierte Lücken:</strong> Die Analyse hat gezeigt, dass rein musikalische und textliche Inhalte den kommerziellen Erfolg nur bedingt vorhersagen können. Wichtige externe Einflussfaktoren, die in der Realität massgeblich für einen Hit verantwortlich sind - wie Marketingbudget, Social-Media-Trends (z.B. TikTok) oder die Bekanntheit des Künstlers - konnten im aktuellen Modell aufgrund fehlender Daten nicht berücksichtigt werden.</p>
+<p><strong>Fazit für den Auftraggeber:</strong> Das Tool bietet eine wertvolle, datenbasierte Zweitmeinung und Filterfunktion, sollte jedoch nicht als alleiniges Entscheidungskriterium für Investitionen genutzt werden, sondern als Ergänzung zur menschlichen Expertise des Talent Managers.</p>
+</section>
+</section>
+<section id="empfehlungen-nächste-schritte" class="level1">
+<h1>Empfehlungen Nächste Schritte</h1>
+<p>Aus der Beurteilung ergeben sich folgende Empfehlungen für das weitere Vorgehen:</p>
+<section id="erweiterung-des-domänenwissens" class="level2">
+<h2 class="anchored" data-anchor-id="erweiterung-des-domänenwissens">Erweiterung des Domänenwissens</h2>
+<p>Da intrinsische Song-Eigenschaften allein den Erfolg nur begrenzt erklären, sollte der Fokus verstärkt auf externe Marktdynamiken wie Marketingbudgets und Social-Media-Trends (z.B. TikTok) gelegt werden.</p>
+</section>
+<section id="adaption-der-projektziele" class="level2">
+<h2 class="anchored" data-anchor-id="adaption-der-projektziele">Adaption der Projektziele</h2>
+<p>Das Ziel einer exakten Vorhersage sollte zugunsten eines Filterinstruments angepasst werden. Das Modell eignet sich primär zur “Negative Selection”, um Songs ohne Potenzial frühzeitig auszusortieren, statt exakte Hit-Scores zu garantieren.</p>
+</section>
+<section id="datenerweiterung" class="level2">
+<h2 class="anchored" data-anchor-id="datenerweiterung">Datenerweiterung</h2>
+<p>Integration externer Datenquellen zur Steigerung der Vorhersagekraft:</p>
+<ul>
+<li><strong>Künstler-Metriken:</strong> Historische Daten wie Follower-Zahlen und vergangene Chart-Erfolge.</li>
+<li><strong>Kontext-Daten:</strong> Informationen über Playlist-Inklusionen oder Radio-Airplay.</li>
+<li><strong>Erweiterte Audio-Features:</strong> Nutzung von <a href="https://acousticbrainz.org/">AcousticBrainz</a>, um detaillierte Low-Level-Spektraldaten sowie Stimmungs- und Genre-Informationen (via Essentia Toolkit) zu erhalten, die über die Standard-Spotify-Features hinausgehen.</li>
+</ul>
+</section>
+<section id="rechtliche-und-ethische-aspekte" class="level2">
+<h2 class="anchored" data-anchor-id="rechtliche-und-ethische-aspekte">Rechtliche und ethische Aspekte</h2>
+<ul>
+<li><strong>Plattform-Risiko:</strong> Die Abhängigkeit von den Spotify-Nutzungsbedingungen muss überwacht werden.</li>
+<li><strong>Bias:</strong> Der Bias der Zielvariable “Popularity” hin zu Mainstream-Musik und Songs mit verfügbaren Lyrics (Genius) ist bei der Anwendung zu berücksichtigen.</li>
+</ul>
+</section>
+<section id="bereitstellung" class="level2">
+<h2 class="anchored" data-anchor-id="bereitstellung">Bereitstellung</h2>
+<ul>
+<li><strong>Nutzung:</strong> Die Resultate dienen dem Talent Manager als operative Entscheidungsunterstützung (Zweitmeinung) zur Priorisierung von Songs.</li>
+<li><strong>Form:</strong> Übergabe der Software als dokumentierte Jupyter Notebooks an das IT-Team zur technischen Integration.</li>
+</ul>
+</section>
+</section>
+<section id="checkpoint-entscheidung" class="level1">
+<h1>Checkpoint-Entscheidung</h1>
+<ul>
+<li><p><strong>Entscheidungsträger:</strong> Aristos Panteli (Sponsor, Bandwidth Beats)</p></li>
+<li><p><strong>Ergebnis:</strong> Freigabe für eingeschränkten Pilotbetrieb &amp; Initiierung Phase 2</p></li>
+<li><p><strong>Begründung:</strong> Die Entscheidung basiert auf dem gemischten Resultat der Zielerreichung. Da die geforderte Prognosegenauigkeit erfolgreich unterboten wurde (RMSE 11.69 gegenüber Zielwert 15), ist der Prototyp technisch reif für den Einsatz als Filterinstrument (“Negative Selection”). Er bietet dem Talent Manager sofortigen Mehrwert, indem er Songs ohne Erfolgsaussichten zuverlässig identifiziert.</p>
+<p>Da jedoch die für eine “Hit-Garantie” notwendige Erklärungskraft (<span class="math inline">\(R^2\)</span> ≥ 0.4) verfehlt wurde, erfolgt keine Freigabe als alleiniges Entscheidungstool für Signings. Stattdessen wird den Empfehlungen folgend eine Erweiterung des Projektumfangs beschlossen: Die Integration von externen Marktdaten (Social Media) und erweiterten Audio-Features (AcousticBrainz) soll in einer zweiten Phase die Lücke zwischen technischer Analyse und Marktrealität schliessen.</p></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script>
