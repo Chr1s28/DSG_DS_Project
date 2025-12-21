@@ -369,34 +369,34 @@ window.Quarto = {
   <ul>
   <li><a href="#ausgangslage" id="toc-ausgangslage" class="nav-link active" data-scroll-target="#ausgangslage">Ausgangslage</a></li>
   <li><a href="#linear-regression-modell-baseline" id="toc-linear-regression-modell-baseline" class="nav-link" data-scroll-target="#linear-regression-modell-baseline">Linear Regression Modell (Baseline)</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#modellbeschreibung" id="toc-modellbeschreibung" class="nav-link" data-scroll-target="#modellbeschreibung">Modellbeschreibung</a></li>
   <li><a href="#resultate" id="toc-resultate" class="nav-link" data-scroll-target="#resultate">Resultate</a></li>
   <li><a href="#modellinterpretation" id="toc-modellinterpretation" class="nav-link" data-scroll-target="#modellinterpretation">Modellinterpretation</a></li>
   </ul></li>
   <li><a href="#random-forest-regressor-modell" id="toc-random-forest-regressor-modell" class="nav-link" data-scroll-target="#random-forest-regressor-modell">Random Forest Regressor Modell</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#modellbeschreibung-1" id="toc-modellbeschreibung-1" class="nav-link" data-scroll-target="#modellbeschreibung-1">Modellbeschreibung</a></li>
   <li><a href="#resultate-1" id="toc-resultate-1" class="nav-link" data-scroll-target="#resultate-1">Resultate</a></li>
   <li><a href="#modellinterpretation-1" id="toc-modellinterpretation-1" class="nav-link" data-scroll-target="#modellinterpretation-1">Modellinterpretation</a></li>
   </ul></li>
   <li><a href="#xgboost-regressor-modell" id="toc-xgboost-regressor-modell" class="nav-link" data-scroll-target="#xgboost-regressor-modell">XGBoost Regressor Modell</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#spotify_cleaned_no_noise" id="toc-spotify_cleaned_no_noise" class="nav-link" data-scroll-target="#spotify_cleaned_no_noise">Spotify_Cleaned_No_Noise</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#modellbeschreibung-2" id="toc-modellbeschreibung-2" class="nav-link" data-scroll-target="#modellbeschreibung-2">Modellbeschreibung</a></li>
   <li><a href="#resultate-2" id="toc-resultate-2" class="nav-link" data-scroll-target="#resultate-2">Resultate</a></li>
   <li><a href="#modellinterpretation-2" id="toc-modellinterpretation-2" class="nav-link" data-scroll-target="#modellinterpretation-2">Modellinterpretation</a></li>
   </ul></li>
   <li><a href="#spotify_genius_no_noise_embeddings" id="toc-spotify_genius_no_noise_embeddings" class="nav-link" data-scroll-target="#spotify_genius_no_noise_embeddings">Spotify_Genius_No_Noise_Embeddings</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#modellbeschreibung-3" id="toc-modellbeschreibung-3" class="nav-link" data-scroll-target="#modellbeschreibung-3">Modellbeschreibung</a></li>
   <li><a href="#resultate-3" id="toc-resultate-3" class="nav-link" data-scroll-target="#resultate-3">Resultate</a></li>
   <li><a href="#modellinterpretation-3" id="toc-modellinterpretation-3" class="nav-link" data-scroll-target="#modellinterpretation-3">Modellinterpretation</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#schlussfolgerungen-und-ausblick" id="toc-schlussfolgerungen-und-ausblick" class="nav-link" data-scroll-target="#schlussfolgerungen-und-ausblick">Schlussfolgerungen und Ausblick</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#fazit" id="toc-fazit" class="nav-link" data-scroll-target="#fazit">Fazit</a></li>
   <li><a href="#limitierungen" id="toc-limitierungen" class="nav-link" data-scroll-target="#limitierungen">Limitierungen</a></li>
   <li><a href="#nächste-schritte" id="toc-nächste-schritte" class="nav-link" data-scroll-target="#nächste-schritte">Nächste Schritte</a></li>
@@ -1069,20 +1069,17 @@ Baseline R^2: 0.0540</code></pre>
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Feature"</span>: X.columns,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Coefficient"</span>: lr_model.coef_</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>coef_df[<span class="st">"Abs_Coefficient"</span>] <span class="op">=</span> coef_df[<span class="st">"Coefficient"</span>].<span class="bu">abs</span>()</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> coef_df.sort_values(<span class="st">"Abs_Coefficient"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.barh(coef_df[<span class="st">"Feature"</span>].head(<span class="dv">10</span>), coef_df[<span class="st">"Coefficient"</span>].head(<span class="dv">10</span>))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Koeffizient"</span>)</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Einflussfaktoren (Linear Regression)"</span>)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> pd.DataFrame({<span class="st">"Feature"</span>: X.columns, <span class="st">"Coefficient"</span>: lr_model.coef_})</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>coef_df[<span class="st">"Abs_Coefficient"</span>] <span class="op">=</span> coef_df[<span class="st">"Coefficient"</span>].<span class="bu">abs</span>()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>coef_df <span class="op">=</span> coef_df.sort_values(<span class="st">"Abs_Coefficient"</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.barh(coef_df[<span class="st">"Feature"</span>].head(<span class="dv">10</span>), coef_df[<span class="st">"Coefficient"</span>].head(<span class="dv">10</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Koeffizient"</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Top 10 Einflussfaktoren (Linear Regression)"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>plt.gca().invert_yaxis()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>plt.grid(axis<span class="op">=</span><span class="st">"x"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>
@@ -1772,12 +1769,12 @@ Random Forest R^2: 0.1727</code></pre>
 <h2 class="anchored" data-anchor-id="modellinterpretation-1">Modellinterpretation</h2>
 <p>Die Feature Importance Grafik verdeutlicht, welche Merkmale der Random Forest am häufigsten für Entscheidungen (Splits) in den Bäumen verwendet hat:</p>
 <ol type="1">
-<li>track_age_days: Mit Abstand am wichtigsten ist das Veröffentlichungsdatum. Dies bestätigt unsere Intuition dass das Alter eines Songs auf Spotify ein Haupttreiber für Popularität ist.</li>
-<li>Loudness War: loudness ist das wichtigste Audio-Feature. Dies korrespondiert mit der im Datenbericht gezeigten Korrelation, lautere Tracks setzen sich in Playlists eher durch.</li>
-<li>Akustische Merkmale: Features wie acousticness, duration_ms und energy spielen eine moderate Rolle.</li>
-<li>Irrelevanz von Keys: Technische Merkmale wie key (Tonart) oder mode (Dur/Moll) haben fast keinen Einfluss auf die Vorhersage.</li>
+<li><strong>track_age_days:</strong> Mit Abstand am wichtigsten ist das Veröffentlichungsdatum. Dies bestätigt unsere Intuition dass das Alter eines Songs auf Spotify ein Haupttreiber für Popularität ist.</li>
+<li><strong>Loudness War:</strong> loudness ist das wichtigste Audio-Feature. Dies korrespondiert mit der im Datenbericht gezeigten Korrelation, lautere Tracks setzen sich in Playlists eher durch.</li>
+<li><strong>Akustische Merkmale:</strong> Features wie acousticness, duration_ms und energy spielen eine moderate Rolle.</li>
+<li><strong>Irrelevanz von Keys:</strong> Technische Merkmale wie key (Tonart) oder mode (Dur/Moll) haben fast keinen Einfluss auf die Vorhersage.</li>
 </ol>
-<div id="d1fbdc94" class="cell" data-execution_count="12">
+<div id="d1fbdc94" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -1789,27 +1786,23 @@ Random Forest R^2: 0.1727</code></pre>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> rf_model.feature_importances_</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>feature_names <span class="op">=</span> X_train.columns</span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_imp <span class="op">=</span> pd.DataFrame({</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Feature"</span>: feature_names,</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Importance"</span>: importances</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>}).sort_values(by<span class="op">=</span><span class="st">"Importance"</span>, ascending<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    df_imp.tail(<span class="dv">15</span>),</span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Importance"</span>,</span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"Feature"</span>,</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    orientation<span class="op">=</span><span class="st">"h"</span>,</span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Random Forest: Feature Importance (Top 15)"</span>,</span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">"Importance"</span>: <span class="st">"Relative Wichtigkeit"</span>},</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>    text_auto<span class="op">=</span><span class="st">".3f"</span></span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">600</span>,</span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="va">None</span></span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>df_imp <span class="op">=</span> pd.DataFrame({<span class="st">"Feature"</span>: feature_names, <span class="st">"Importance"</span>: importances}).sort_values(</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"Importance"</span>, ascending<span class="op">=</span><span class="va">True</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>    df_imp.tail(<span class="dv">15</span>),</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">"Importance"</span>,</span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="st">"Feature"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    orientation<span class="op">=</span><span class="st">"h"</span>,</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Random Forest: Feature Importance (Top 15)"</span>,</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">"Importance"</span>: <span class="st">"Relative Wichtigkeit"</span>},</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    text_auto<span class="op">=</span><span class="st">".3f"</span>,</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="dv">600</span>, yaxis_title<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
@@ -2663,27 +2656,38 @@ XGBoost R^2: 0.1742</code></pre>
 <p>Um unsere Hypothese zu prüfen, dass semantische Inhalte der Songtexte die Vorhersage verbessern können, trainieren wir das XGBoost-Modell erneut. Diesmal verwenden wir jedoch den erweiterten Datensatz <code>Spotify_Genius_No_Noise_Embeddings</code>, der zusätzlich zu den Audio-Features auch die Vektor-Repräsentationen der Lyrics enthält.</p>
 <p>Die Embeddings liegen ursprünglich als einzelne Spalte mit Listen von Floats vor. Für das Training müssen diese in separate Feature-Spalten expandiert werden.</p>
 <p>Dabei machen wir uns eine spezielle Eigenschaft des verwendeten Embedding-Modells (<code>jina-embeddings-v3</code>) zunutze: das <strong>Matryoshka Representation Learning</strong>. Dies erlaubt es uns, die Dimensionen der Vektoren zu kürzen, ohne signifikant an semantischer Information zu verlieren. Anstatt der vollen Länge verwenden wir nur die ersten <strong>64 Dimensionen</strong> der Embeddings. Dies reduziert die Komplexität des Modells erheblich und verhindert Overfitting, während die wichtigsten semantischen Informationen erhalten bleiben.</p>
-<div id="586dbb52" class="cell" data-execution_count="27">
+<div id="586dbb52" class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>df_ml <span class="op">=</span> pd.read_parquet(Path(<span class="st">"../data/spotify_genius_embeddings_v3.parquet"</span>))</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>df_ml <span class="op">=</span> df_ml.drop(</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"id"</span>, <span class="st">"name"</span>, <span class="st">"album"</span>, <span class="st">"album_id"</span>, <span class="st">"artists"</span>, <span class="st">"artist_ids"</span>, <span class="st">"track_number"</span>, <span class="st">"disc_number"</span>, <span class="st">"year"</span>, <span class="st">"lyrics"</span>]</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Expand embedding column into separate columns</span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>emb_df <span class="op">=</span> pd.DataFrame(df_ml[<span class="st">"embedding"</span>].tolist(), index<span class="op">=</span>df_ml.index)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Only add first 64 dimensions</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>emb_df <span class="op">=</span> emb_df.iloc[:, :<span class="dv">64</span>]</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>emb_df.columns <span class="op">=</span> [<span class="ss">f"emb_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(emb_df.shape[<span class="dv">1</span>])]</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>df_ml <span class="op">=</span> pd.concat([df_ml.drop(columns<span class="op">=</span>[<span class="st">"embedding"</span>]), emb_df], axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_ml.drop(columns<span class="op">=</span>[<span class="st">"popularity"</span>])</span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_ml[<span class="st">"popularity"</span>]</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"id"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"name"</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"album"</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"album_id"</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"artists"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"artist_ids"</span>,</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"track_number"</span>,</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"disc_number"</span>,</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"year"</span>,</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"lyrics"</span>,</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">67</span>)</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training Data Shape: </span><span class="sc">{</span>X_train<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing Data Shape: </span><span class="sc">{</span>X_test<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Expand embedding column into separate columns</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>emb_df <span class="op">=</span> pd.DataFrame(df_ml[<span class="st">"embedding"</span>].tolist(), index<span class="op">=</span>df_ml.index)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Only add first 64 dimensions</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>emb_df <span class="op">=</span> emb_df.iloc[:, :<span class="dv">64</span>]</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>emb_df.columns <span class="op">=</span> [<span class="ss">f"emb_</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(emb_df.shape[<span class="dv">1</span>])]</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>df_ml <span class="op">=</span> pd.concat([df_ml.drop(columns<span class="op">=</span>[<span class="st">"embedding"</span>]), emb_df], axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df_ml.drop(columns<span class="op">=</span>[<span class="st">"popularity"</span>])</span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df_ml[<span class="st">"popularity"</span>]</span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">67</span>)</span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Training Data Shape: </span><span class="sc">{</span>X_train<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Testing Data Shape: </span><span class="sc">{</span>X_test<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Training Data Shape: (377182, 79)
 Testing Data Shape: (94296, 79)</code></pre>
@@ -3457,7 +3461,7 @@ XGBoost R^2: 0.2256</code></pre>
 </section>
 <section id="modellinterpretation-3" class="level3">
 <h3 class="anchored" data-anchor-id="modellinterpretation-3">Modellinterpretation</h3>
-<p>Die Feature Importance zeigt nun eine starke Gewichtung der semantischen Features. Dies könnte darauf hindeuten, dass bestimmte semantische Konzepte oder Themen in den Lyrics einen signifikanten Einfluss auf die Popularität haben.</p>
+<p>Die Feature Importance zeigt nun eine moderate Gewichtung der semantischen Embedding-Features. Dies könnte darauf hindeuten, dass bestimmte semantische Konzepte oder Themen in den Lyrics einen signifikanten Einfluss auf die Popularität haben.</p>
 <p>Zusätzlich bleibt die Bedeutung des Veröffentlichungsdatums (<code>track_age_days</code>) und der Lautstärke (<code>loudness</code>) bestehen, was die vorherigen Erkenntnisse bestätigt.</p>
 <div id="af148147" class="cell">
 <details class="code-fold">
@@ -3485,20 +3489,7 @@ XGBoost R^2: 0.2256</code></pre>
 <section id="fazit" class="level2">
 <h2 class="anchored" data-anchor-id="fazit">Fazit</h2>
 <p>Die Integration von Songtext-Embeddings in das XGBoost-Modell lieferte mit einem <span class="math inline">\(R^2\)</span> von <strong>0.242</strong> das beste Ergebnis und übertraf die rein akustischen Modelle deutlich. Dies bestätigt, dass semantische Inhalte neben Audio-Merkmalen eine messbare Rolle für die Popularität spielen. Dennoch bleibt ein grosser Teil der Varianz unerklärt, was darauf hindeutet, dass intrinsische Song-Eigenschaften allein den kommerziellen Erfolg nur bedingt vorhersagen können.</p>
-</section>
-<section id="limitierungen" class="level2">
-<h2 class="anchored" data-anchor-id="limitierungen">Limitierungen</h2>
-<p>Trotz der Reduktion der Embedding-Dimensionen besteht bei der hohen Anzahl an Features ein Risiko für Overfitting, insbesondere bei selteneren Genres oder Sprachen. Die grösste Limitierung liegt jedoch in der Natur der Sache: Die Popularität eines Songs wird massgeblich von externen Faktoren bestimmt, die unser Datensatz nicht abbildet. Dazu gehören Marketingbudgets, die bestehende Bekanntheit der Künstler:innen, Social-Media-Trends (z.B. TikTok) oder strategische Playlist-Platzierungen durch Labels. Ein Modell, das “blind” für diesen Kontext ist, stösst an natürliche Grenzen.</p>
-</section>
-<section id="nächste-schritte" class="level2">
-<h2 class="anchored" data-anchor-id="nächste-schritte">Nächste Schritte</h2>
-<p>Um die Vorhersagekraft signifikant zu steigern, müssten externe Datenquellen integriert werden:</p>
-<ul>
-<li><strong>Künstler-Metriken:</strong> Historische Popularität, Follower-Zahlen oder Social-Media-Engagement.</li>
-<li><strong>Kontext-Daten:</strong> Informationen über Playlist-Inklusionen oder Radio-Airplay.</li>
-<li><strong>Deep Audio:</strong> Analyse von Roh-Audiodateien (Spektrogramme) mittels CNNs statt nur aggregierter Features.</li>
-</ul>
-<div id="f8b7b5da" class="cell" data-execution_count="13">
+<div id="f8b7b5da" class="cell">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
@@ -3519,37 +3510,35 @@ XGBoost R^2: 0.2256</code></pre>
 <span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>        marker_color<span class="op">=</span><span class="st">"#1f77b4"</span>,</span>
 <span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>r2_scores,</span>
 <span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>        textposition<span class="op">=</span><span class="st">"auto"</span>,</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>        texttemplate<span class="op">=</span><span class="st">"%</span><span class="sc">{text:.3f}</span><span class="st">"</span></span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>        texttemplate<span class="op">=</span><span class="st">"%</span><span class="sc">{text:.3f}</span><span class="st">"</span>,</span>
 <span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>    ),</span>
 <span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>    secondary_y<span class="op">=</span><span class="va">False</span>,</span>
 <span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>    go.Scatter(</span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>models,</span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>rmse_scores,</span>
-<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"RMSE (tiefer ist besser)"</span>,</span>
-<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>        marker_color<span class="op">=</span><span class="st">"#d62728"</span>,</span>
-<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">"lines+markers+text"</span>,</span>
-<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>rmse_scores,</span>
-<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>        textposition<span class="op">=</span><span class="st">"top center"</span>,</span>
-<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>        texttemplate<span class="op">=</span><span class="st">"%</span><span class="sc">{text:.2f}</span><span class="st">"</span></span>
-<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>    secondary_y<span class="op">=</span><span class="va">True</span>,</span>
-<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
-<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Modellvergleich: R^2 vs. RMSE"</span>,</span>
-<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span>{<span class="st">"orientation"</span>: <span class="st">"h"</span>, <span class="st">"yanchor"</span>: <span class="st">"bottom"</span>, <span class="st">"y"</span>: <span class="fl">1.02</span>, <span class="st">"xanchor"</span>: <span class="st">"right"</span>, <span class="st">"x"</span>: <span class="dv">1</span>},</span>
-<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span></span>
-<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">"R^2 Score"</span>, secondary_y<span class="op">=</span><span class="va">False</span>, <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="fl">0.23</span>])</span>
-<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">"RMSE"</span>, secondary_y<span class="op">=</span><span class="va">True</span>, <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">14</span>])</span>
-<span id="cb26-48"><a href="#cb26-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-49"><a href="#cb26-49" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a>    go.Scatter(</span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>models,</span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>rmse_scores,</span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>        name<span class="op">=</span><span class="st">"RMSE (tiefer ist besser)"</span>,</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a>        marker_color<span class="op">=</span><span class="st">"#d62728"</span>,</span>
+<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a>        mode<span class="op">=</span><span class="st">"lines+markers+text"</span>,</span>
+<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>        text<span class="op">=</span>rmse_scores,</span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>        textposition<span class="op">=</span><span class="st">"top center"</span>,</span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>        texttemplate<span class="op">=</span><span class="st">"%</span><span class="sc">{text:.2f}</span><span class="st">"</span>,</span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a>    secondary_y<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">"Modellvergleich: R^2 vs. RMSE"</span>,</span>
+<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span>{<span class="st">"orientation"</span>: <span class="st">"h"</span>, <span class="st">"yanchor"</span>: <span class="st">"bottom"</span>, <span class="st">"y"</span>: <span class="fl">1.02</span>, <span class="st">"xanchor"</span>: <span class="st">"right"</span>, <span class="st">"x"</span>: <span class="dv">1</span>},</span>
+<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="dv">500</span>,</span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">"R^2 Score"</span>, secondary_y<span class="op">=</span><span class="va">False</span>, <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="fl">0.23</span>])</span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">"RMSE"</span>, secondary_y<span class="op">=</span><span class="va">True</span>, <span class="bu">range</span><span class="op">=</span>[<span class="dv">0</span>, <span class="dv">14</span>])</span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a>fig.show()</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div>            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_SVG"></script><script type="text/javascript">if (window.MathJax && window.MathJax.Hub && window.MathJax.Hub.Config) {window.MathJax.Hub.Config({SVG: {font: "STIX-Web"}});}</script>                <script type="text/javascript">window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
@@ -3580,6 +3569,19 @@ if (outputEl) {{
                         })                };            </script>        </div>
 </div>
 </div>
+</section>
+<section id="limitierungen" class="level2">
+<h2 class="anchored" data-anchor-id="limitierungen">Limitierungen</h2>
+<p>Trotz der Reduktion der Embedding-Dimensionen besteht bei der hohen Anzahl an Features ein Risiko für Overfitting, insbesondere bei selteneren Genres oder Sprachen. Die grösste Limitierung liegt jedoch in der Natur der Sache: Die Popularität eines Songs wird massgeblich von externen Faktoren bestimmt, die unser Datensatz nicht abbildet. Dazu gehören Marketingbudgets, die bestehende Bekanntheit der Künstler:innen, Social-Media-Trends (z.B. TikTok) oder strategische Playlist-Platzierungen durch Labels. Ein Modell, das “blind” für diesen Kontext ist, stösst an natürliche Grenzen.</p>
+</section>
+<section id="nächste-schritte" class="level2">
+<h2 class="anchored" data-anchor-id="nächste-schritte">Nächste Schritte</h2>
+<p>Um die Vorhersagekraft signifikant zu steigern, müssten externe Datenquellen integriert werden:</p>
+<ul>
+<li><strong>Künstler-Metriken:</strong> Historische Popularität, Follower-Zahlen oder Social-Media-Engagement</li>
+<li><strong>Kontext-Daten:</strong> Informationen über Playlist-Inklusionen oder Radio-Airplay</li>
+<li><strong>Deep Audio:</strong> Analyse von Roh-Audiodateien (Spektrogramme) mittels CNNs statt nur aggregierter Features</li>
+</ul>
 
 
 </section>
