@@ -84,83 +84,6 @@
     "text": "Nächste Schritte\nUm die Vorhersagekraft signifikant zu steigern, müssten externe Datenquellen integriert werden:\n\nKünstler-Metriken: Historische Popularität, Follower-Zahlen oder Social-Media-Engagement\nKontext-Daten: Informationen über Playlist-Inklusionen oder Radio-Airplay\nDeep Audio: Analyse von Roh-Audiodateien (Spektrogramme) mittels CNNs statt nur aggregierter Features"
   },
   {
-    "objectID": "4_evaluationsbericht.html",
-    "href": "4_evaluationsbericht.html",
-    "title": "Evaluationsbericht",
-    "section": "",
-    "text": "Die in der Projektcharta definierten quantitativen Erfolgsmetriken wurden mit dem finalen Modell (XGBoost mit Songtext-Embeddings) gemischt erreicht.\n\nMetrik \\(R^2\\) (Erklärungsgehalt):\n\nZielwert: ≥ 0.4\nErreicht: 0.242\n\nBeurteilung: Ziel verfehlt. Das Modell kann rund 24% der Varianz in der Popularität erklären. Dies ist eine deutliche Steigerung gegenüber der Baseline (5.4%), bleibt jedoch unter dem angestrebten Zielwert von 40%. Dies deutet darauf hin, dass ein erheblicher Teil der Popularität nicht durch intrinsische Song-Eigenschaften (Audio & Text) erklärt werden kann.\n\nMetrik RMSE (Prognosegenauigkeit):\n\nZielwert: ≤ 15 (Projektziel) bzw. ≤ 10 (Data Mining Ziel)\nErreicht: 11.69\nBeurteilung: Teilweise erreicht. Das übergeordnete Projektziel einer durchschnittlichen Abweichung von maximal 15 Punkten auf der Popularitätsskala wurde erfolgreich unterboten. Das ambitioniertere technische Ziel von ≤ 10 wurde jedoch knapp verfehlt.\n\n\n\n\n\nDas primäre Projektziel war es, dem Talent Manager und den Künstlern nützliche Prognosen zu liefern, um das Erfolgspotenzial von Songs einzuschätzen.\nErfüllung der Anforderungen: Das entwickelte Modell liefert mit einem RMSE von 11.69 eine solide Indikation für die zu erwartende Popularität. Es eignet sich gut, um “tote” Tracks (ohne Erfolgsaussichten) frühzeitig zu identifizieren und vom manuellen Review-Prozess auszuschliessen.\nIdentifizierte Lücken: Die Analyse hat gezeigt, dass rein musikalische und textliche Inhalte den kommerziellen Erfolg nur bedingt vorhersagen können. Wichtige externe Einflussfaktoren, die in der Realität massgeblich für einen Hit verantwortlich sind - wie Marketingbudget, Social-Media-Trends (z.B. TikTok) oder die Bekanntheit des Künstlers - konnten im aktuellen Modell aufgrund fehlender Daten nicht berücksichtigt werden.\nFazit für den Auftraggeber: Das Tool bietet eine wertvolle, datenbasierte Zweitmeinung und Filterfunktion, sollte jedoch nicht als alleiniges Entscheidungskriterium für Investitionen genutzt werden, sondern als Ergänzung zur menschlichen Expertise des Talent Managers."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#data-mining--modellierungs-ziele",
-    "href": "4_evaluationsbericht.html#data-mining--modellierungs-ziele",
-    "title": "Evaluationsbericht",
-    "section": "",
-    "text": "Die in der Projektcharta definierten quantitativen Erfolgsmetriken wurden mit dem finalen Modell (XGBoost mit Songtext-Embeddings) gemischt erreicht.\n\nMetrik \\(R^2\\) (Erklärungsgehalt):\n\nZielwert: ≥ 0.4\nErreicht: 0.242\n\nBeurteilung: Ziel verfehlt. Das Modell kann rund 24% der Varianz in der Popularität erklären. Dies ist eine deutliche Steigerung gegenüber der Baseline (5.4%), bleibt jedoch unter dem angestrebten Zielwert von 40%. Dies deutet darauf hin, dass ein erheblicher Teil der Popularität nicht durch intrinsische Song-Eigenschaften (Audio & Text) erklärt werden kann.\n\nMetrik RMSE (Prognosegenauigkeit):\n\nZielwert: ≤ 15 (Projektziel) bzw. ≤ 10 (Data Mining Ziel)\nErreicht: 11.69\nBeurteilung: Teilweise erreicht. Das übergeordnete Projektziel einer durchschnittlichen Abweichung von maximal 15 Punkten auf der Popularitätsskala wurde erfolgreich unterboten. Das ambitioniertere technische Ziel von ≤ 10 wurde jedoch knapp verfehlt."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#projektziele",
-    "href": "4_evaluationsbericht.html#projektziele",
-    "title": "Evaluationsbericht",
-    "section": "",
-    "text": "Das primäre Projektziel war es, dem Talent Manager und den Künstlern nützliche Prognosen zu liefern, um das Erfolgspotenzial von Songs einzuschätzen.\nErfüllung der Anforderungen: Das entwickelte Modell liefert mit einem RMSE von 11.69 eine solide Indikation für die zu erwartende Popularität. Es eignet sich gut, um “tote” Tracks (ohne Erfolgsaussichten) frühzeitig zu identifizieren und vom manuellen Review-Prozess auszuschliessen.\nIdentifizierte Lücken: Die Analyse hat gezeigt, dass rein musikalische und textliche Inhalte den kommerziellen Erfolg nur bedingt vorhersagen können. Wichtige externe Einflussfaktoren, die in der Realität massgeblich für einen Hit verantwortlich sind - wie Marketingbudget, Social-Media-Trends (z.B. TikTok) oder die Bekanntheit des Künstlers - konnten im aktuellen Modell aufgrund fehlender Daten nicht berücksichtigt werden.\nFazit für den Auftraggeber: Das Tool bietet eine wertvolle, datenbasierte Zweitmeinung und Filterfunktion, sollte jedoch nicht als alleiniges Entscheidungskriterium für Investitionen genutzt werden, sondern als Ergänzung zur menschlichen Expertise des Talent Managers."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#erweiterung-des-domänenwissens",
-    "href": "4_evaluationsbericht.html#erweiterung-des-domänenwissens",
-    "title": "Evaluationsbericht",
-    "section": "Erweiterung des Domänenwissens",
-    "text": "Erweiterung des Domänenwissens\nDa intrinsische Song-Eigenschaften allein den Erfolg nur begrenzt erklären, sollte der Fokus verstärkt auf externe Marktdynamiken wie Marketingbudgets und Social-Media-Trends (z.B. TikTok) gelegt werden."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#adaption-der-projektziele",
-    "href": "4_evaluationsbericht.html#adaption-der-projektziele",
-    "title": "Evaluationsbericht",
-    "section": "Adaption der Projektziele",
-    "text": "Adaption der Projektziele\nDas Ziel einer exakten Vorhersage sollte zugunsten eines Filterinstruments angepasst werden. Das Modell eignet sich primär zur “Negative Selection”, um Songs ohne Potenzial frühzeitig auszusortieren, statt exakte Hit-Scores zu garantieren."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#datenerweiterung",
-    "href": "4_evaluationsbericht.html#datenerweiterung",
-    "title": "Evaluationsbericht",
-    "section": "Datenerweiterung",
-    "text": "Datenerweiterung\nIntegration externer Datenquellen zur Steigerung der Vorhersagekraft:\n\nKünstler-Metriken: Historische Daten wie Follower-Zahlen und vergangene Chart-Erfolge.\nKontext-Daten: Informationen über Playlist-Inklusionen oder Radio-Airplay.\nErweiterte Audio-Features: Nutzung von AcousticBrainz, um detaillierte Low-Level-Spektraldaten sowie Stimmungs- und Genre-Informationen (via Essentia Toolkit) zu erhalten, die über die Standard-Spotify-Features hinausgehen."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#rechtliche-und-ethische-aspekte",
-    "href": "4_evaluationsbericht.html#rechtliche-und-ethische-aspekte",
-    "title": "Evaluationsbericht",
-    "section": "Rechtliche und ethische Aspekte",
-    "text": "Rechtliche und ethische Aspekte\n\nPlattform-Risiko: Die Abhängigkeit von den Spotify-Nutzungsbedingungen muss überwacht werden.\nBias: Der Bias der Zielvariable “Popularity” hin zu Mainstream-Musik und Songs mit verfügbaren Lyrics (Genius) ist bei der Anwendung zu berücksichtigen."
-  },
-  {
-    "objectID": "4_evaluationsbericht.html#bereitstellung",
-    "href": "4_evaluationsbericht.html#bereitstellung",
-    "title": "Evaluationsbericht",
-    "section": "Bereitstellung",
-    "text": "Bereitstellung\n\nNutzung: Die Resultate dienen dem Talent Manager als operative Entscheidungsunterstützung (Zweitmeinung) zur Priorisierung von Songs.\nForm: Übergabe der Software als dokumentierte Jupyter Notebooks an das IT-Team zur technischen Integration."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Song Popularity Predictor",
-    "section": "",
-    "text": "Dieses Projekt wurde im Rahmen vom DS.DSG Modul durchgeführt und hat zum Ziel, die Popularität von Songs mithilfe datengetriebener Methoden nachvollziehbar vorherzusagen. Dazu werden verschiedene Informationsquellen kombiniert - Metadaten, audio-basierte Features und textuelle Repräsentationen (z.B. Lyrics-Embeddings).\nDie Arbeit legt Wert auf Transparenz, Reproduzierbarkeit und nachvollziehbare Evaluationsmetriken, sodass Modellentscheidungen und Ergebnisse geprüft werden können.\n\n\n\nDaten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse\n\n\n\n\n\nChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
-  },
-  {
-    "objectID": "index.html#projektüberblick",
-    "href": "index.html#projektüberblick",
-    "title": "Song Popularity Predictor",
-    "section": "",
-    "text": "Daten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse"
-  },
-  {
-    "objectID": "index.html#ki-deklaraion",
-    "href": "index.html#ki-deklaraion",
-    "title": "Song Popularity Predictor",
-    "section": "",
-    "text": "ChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
-  },
-  {
     "objectID": "1_projektcharta.html",
     "href": "1_projektcharta.html",
     "title": "Projektcharta",
@@ -259,6 +182,27 @@
     "text": "Stakeholder\nDie Stakeholder, insbesondere der Sponsor wird wöchentlich vom Teamsprecher über den Projektverlauf informiert."
   },
   {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Song Popularity Predictor",
+    "section": "",
+    "text": "Dieses Projekt wurde im Rahmen vom DS.DSG Modul durchgeführt und hat zum Ziel, die Popularität von Songs mithilfe datengetriebener Methoden nachvollziehbar vorherzusagen. Dazu werden verschiedene Informationsquellen kombiniert - Metadaten, audio-basierte Features und textuelle Repräsentationen (z.B. Lyrics-Embeddings).\nDie Arbeit legt Wert auf Transparenz, Reproduzierbarkeit und nachvollziehbare Evaluationsmetriken, sodass Modellentscheidungen und Ergebnisse geprüft werden können.\n\n\n\nDaten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse\n\n\n\n\n\nChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
+  },
+  {
+    "objectID": "index.html#projektüberblick",
+    "href": "index.html#projektüberblick",
+    "title": "Song Popularity Predictor",
+    "section": "",
+    "text": "Daten: Metadaten, Audio-Features, Lyrics-Embeddings und ergänzende Variablen\nZiel: Entwicklung robuster Vorhersagemodelle und verständliche Evaluationen\nStruktur: Die Hauptinhalte liegen als Quarto-Site im Ordner site/ und sind in mehrere Jupyter-Notebooks gegliedert:\n\nProjektcharta - Projektziele und Vorgehen\nDatenbericht - Datenexploration und Aufbereitung\nModellierungsbericht - Modellaufbau und Training\nEvaluationsbericht - Evaluation und Ergebnisse"
+  },
+  {
+    "objectID": "index.html#ki-deklaraion",
+    "href": "index.html#ki-deklaraion",
+    "title": "Song Popularity Predictor",
+    "section": "",
+    "text": "ChatGPT, Google Gemini und Copilot (via VS-Code) wurden für folgende Zwecke selektiv eingesetzt:\n\nSprachliche Überarbeitung der Dokumentation\nDebugging / Troubleshooting\n\nDie fachliche Konzeption, Datenanalyse, Modellierung, Interpretation der Ergebnisse sowie die inhaltliche Verantwortung wurden vollständig eigenständig übernommen.\nSämtliche durch KI erzeugten Inhalte wurden kritisch geprüft und gegebenenfalls angepasst."
+  },
+  {
     "objectID": "2_datenbericht.html",
     "href": "2_datenbericht.html",
     "title": "Datenbericht",
@@ -292,5 +236,61 @@
     "title": "Datenbericht",
     "section": "Fußnoten",
     "text": "Fußnoten\n\n\nhttps://developer.spotify.com/documentation/web-api/concepts/spotify-uris-ids↩︎\nhttps://developer.spotify.com/documentation/web-api/reference/get-audio-features#:~:text=speechiness↩︎\nhttps://en.wikipedia.org/wiki/Arabian_Waltz↩︎\nhttps://en.wikipedia.org/wiki/Loudness_war↩︎\nhttps://jina.ai/models/jina-embeddings-v3/↩︎\nhttps://huggingface.co/blog/matryoshka#%F0%9F%AA%86-matryoshka-embeddings↩︎"
+  },
+  {
+    "objectID": "4_evaluationsbericht.html",
+    "href": "4_evaluationsbericht.html",
+    "title": "Evaluationsbericht",
+    "section": "",
+    "text": "Die in der Projektcharta definierten quantitativen Erfolgsmetriken wurden mit dem finalen Modell (XGBoost mit Songtext-Embeddings) gemischt erreicht.\n\nMetrik \\(R^2\\) (Erklärungsgehalt):\n\nZielwert: ≥ 0.4\nErreicht: 0.242\n\nBeurteilung: Ziel verfehlt. Das Modell kann rund 24% der Varianz in der Popularität erklären. Dies ist eine deutliche Steigerung gegenüber der Baseline (5.4%), bleibt jedoch unter dem angestrebten Zielwert von 40%. Dies deutet darauf hin, dass ein erheblicher Teil der Popularität nicht durch intrinsische Song-Eigenschaften (Audio & Text) erklärt werden kann.\n\nMetrik RMSE (Prognosegenauigkeit):\n\nZielwert: ≤ 15 (Projektziel) bzw. ≤ 10 (Data Mining Ziel)\nErreicht: 11.69\nBeurteilung: Teilweise erreicht. Das übergeordnete Projektziel einer durchschnittlichen Abweichung von maximal 15 Punkten auf der Popularitätsskala wurde erfolgreich unterboten. Das ambitioniertere technische Ziel von ≤ 10 wurde jedoch knapp verfehlt.\n\n\n\n\n\nDas primäre Projektziel war es, dem Talent Manager und den Künstlern nützliche Prognosen zu liefern, um das Erfolgspotenzial von Songs einzuschätzen.\nErfüllung der Anforderungen: Das entwickelte Modell liefert mit einem RMSE von 11.69 eine solide Indikation für die zu erwartende Popularität. Es eignet sich gut, um “tote” Tracks (ohne Erfolgsaussichten) frühzeitig zu identifizieren und vom manuellen Review-Prozess auszuschliessen.\nIdentifizierte Lücken: Die Analyse hat gezeigt, dass rein musikalische und textliche Inhalte den kommerziellen Erfolg nur bedingt vorhersagen können. Wichtige externe Einflussfaktoren, die in der Realität massgeblich für einen Hit verantwortlich sind - wie Marketingbudget, Social-Media-Trends (z.B. TikTok) oder die Bekanntheit des Künstlers - konnten im aktuellen Modell aufgrund fehlender Daten nicht berücksichtigt werden.\nFazit für den Auftraggeber: Das Tool bietet eine wertvolle, datenbasierte Zweitmeinung und Filterfunktion, sollte jedoch nicht als alleiniges Entscheidungskriterium für Investitionen genutzt werden, sondern als Ergänzung zur menschlichen Expertise des Talent Managers."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#data-mining--modellierungs-ziele",
+    "href": "4_evaluationsbericht.html#data-mining--modellierungs-ziele",
+    "title": "Evaluationsbericht",
+    "section": "",
+    "text": "Die in der Projektcharta definierten quantitativen Erfolgsmetriken wurden mit dem finalen Modell (XGBoost mit Songtext-Embeddings) gemischt erreicht.\n\nMetrik \\(R^2\\) (Erklärungsgehalt):\n\nZielwert: ≥ 0.4\nErreicht: 0.242\n\nBeurteilung: Ziel verfehlt. Das Modell kann rund 24% der Varianz in der Popularität erklären. Dies ist eine deutliche Steigerung gegenüber der Baseline (5.4%), bleibt jedoch unter dem angestrebten Zielwert von 40%. Dies deutet darauf hin, dass ein erheblicher Teil der Popularität nicht durch intrinsische Song-Eigenschaften (Audio & Text) erklärt werden kann.\n\nMetrik RMSE (Prognosegenauigkeit):\n\nZielwert: ≤ 15 (Projektziel) bzw. ≤ 10 (Data Mining Ziel)\nErreicht: 11.69\nBeurteilung: Teilweise erreicht. Das übergeordnete Projektziel einer durchschnittlichen Abweichung von maximal 15 Punkten auf der Popularitätsskala wurde erfolgreich unterboten. Das ambitioniertere technische Ziel von ≤ 10 wurde jedoch knapp verfehlt."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#projektziele",
+    "href": "4_evaluationsbericht.html#projektziele",
+    "title": "Evaluationsbericht",
+    "section": "",
+    "text": "Das primäre Projektziel war es, dem Talent Manager und den Künstlern nützliche Prognosen zu liefern, um das Erfolgspotenzial von Songs einzuschätzen.\nErfüllung der Anforderungen: Das entwickelte Modell liefert mit einem RMSE von 11.69 eine solide Indikation für die zu erwartende Popularität. Es eignet sich gut, um “tote” Tracks (ohne Erfolgsaussichten) frühzeitig zu identifizieren und vom manuellen Review-Prozess auszuschliessen.\nIdentifizierte Lücken: Die Analyse hat gezeigt, dass rein musikalische und textliche Inhalte den kommerziellen Erfolg nur bedingt vorhersagen können. Wichtige externe Einflussfaktoren, die in der Realität massgeblich für einen Hit verantwortlich sind - wie Marketingbudget, Social-Media-Trends (z.B. TikTok) oder die Bekanntheit des Künstlers - konnten im aktuellen Modell aufgrund fehlender Daten nicht berücksichtigt werden.\nFazit für den Auftraggeber: Das Tool bietet eine wertvolle, datenbasierte Zweitmeinung und Filterfunktion, sollte jedoch nicht als alleiniges Entscheidungskriterium für Investitionen genutzt werden, sondern als Ergänzung zur menschlichen Expertise des Talent Managers."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#erweiterung-des-domänenwissens",
+    "href": "4_evaluationsbericht.html#erweiterung-des-domänenwissens",
+    "title": "Evaluationsbericht",
+    "section": "Erweiterung des Domänenwissens",
+    "text": "Erweiterung des Domänenwissens\nDa intrinsische Song-Eigenschaften allein den Erfolg nur begrenzt erklären, sollte der Fokus verstärkt auf externe Marktdynamiken wie Marketingbudgets und Social-Media-Trends (z.B. TikTok) gelegt werden."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#adaption-der-projektziele",
+    "href": "4_evaluationsbericht.html#adaption-der-projektziele",
+    "title": "Evaluationsbericht",
+    "section": "Adaption der Projektziele",
+    "text": "Adaption der Projektziele\nDas Ziel einer exakten Vorhersage sollte zugunsten eines Filterinstruments angepasst werden. Das Modell eignet sich primär zur “Negative Selection”, um Songs ohne Potenzial frühzeitig auszusortieren, statt exakte Hit-Scores zu garantieren."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#datenerweiterung",
+    "href": "4_evaluationsbericht.html#datenerweiterung",
+    "title": "Evaluationsbericht",
+    "section": "Datenerweiterung",
+    "text": "Datenerweiterung\nIntegration externer Datenquellen zur Steigerung der Vorhersagekraft:\n\nKünstler-Metriken: Historische Daten wie Follower-Zahlen und vergangene Chart-Erfolge.\nKontext-Daten: Informationen über Playlist-Inklusionen oder Radio-Airplay.\nErweiterte Audio-Features: Nutzung von AcousticBrainz, um detaillierte Low-Level-Spektraldaten sowie Stimmungs- und Genre-Informationen (via Essentia Toolkit) zu erhalten, die über die Standard-Spotify-Features hinausgehen."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#rechtliche-und-ethische-aspekte",
+    "href": "4_evaluationsbericht.html#rechtliche-und-ethische-aspekte",
+    "title": "Evaluationsbericht",
+    "section": "Rechtliche und ethische Aspekte",
+    "text": "Rechtliche und ethische Aspekte\n\nPlattform-Risiko: Die Abhängigkeit von den Spotify-Nutzungsbedingungen muss überwacht werden.\nBias: Der Bias der Zielvariable “Popularity” hin zu Mainstream-Musik und Songs mit verfügbaren Lyrics (Genius) ist bei der Anwendung zu berücksichtigen."
+  },
+  {
+    "objectID": "4_evaluationsbericht.html#bereitstellung",
+    "href": "4_evaluationsbericht.html#bereitstellung",
+    "title": "Evaluationsbericht",
+    "section": "Bereitstellung",
+    "text": "Bereitstellung\n\nNutzung: Die Resultate dienen dem Talent Manager als operative Entscheidungsunterstützung (Zweitmeinung) zur Priorisierung von Songs.\nForm: Übergabe der Software als dokumentierte Jupyter Notebooks an das IT-Team zur technischen Integration."
   }
 ]
